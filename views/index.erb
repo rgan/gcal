@@ -1,0 +1,28 @@
+<html>
+<body style="font-size: 16px;font-weight: bold;">
+<%=@msg%>
+<p>Modify event details as appropriate, then create event. Attendees should receive email invite.</p>
+<form action="/events" method=POST>
+  <div>
+    <textarea rows="20" cols="40" name="request_body">
+      {
+ "summary": "testing",
+ "location": "test",
+ "start": {
+  "dateTime": "2012-05-16T10:00:00.000-07:00"
+ },
+ "end": {
+  "dateTime": "2012-05-16T10:25:00.000-07:00"
+ },
+ "attendees": [
+  {
+   "email": "xxx@foo.com"
+  }
+ ]
+}
+    </textarea>
+    </div>
+  <div><button type="Submit">Create Event</button></div>
+</form>
+</body>
+</html>
