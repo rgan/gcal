@@ -1,0 +1,21 @@
+Sinatra app that demonstrates integration with Google's Calendar API (v3) to create events.
+
+The authentication is done offline:
+1. Register your application to obtain the CLIENT_ID and CLIENT_SECRET as described here: https://developers.google.com/google-apps/calendar/firstapp.
+
+2. Get the auth code:  Navigate to https://accounts.google.com/o/oauth2/auth?response_type=code&redirect_uri=http://yourapp.herokuapp.com/oauth2callback&client_id=xxxxx&scope=https://www.googleapis.com/auth/calendar&access_type=offline
+
+Note that access_type=offline provides the refresh token which can be used at anytime in the future to request a new access token.
+
+3. Get the access and refresh tokens:
+curl -H "Content-Type:application/x-www-form-urlencoded" -X POST -d "code=xxxxxxxxx&redirect_uri=http://yourapp.herokuapp.com/oauth2callback&client_id=xxxx&client_secret=xxxxx&grant_type=authorization_code" https://accounts.google.com/o/oauth2/token
+
+Define environment variables for CLIENT_ID, CLIENT_SECRET and REFRESH_TOKEN.
+rvm use ruby-1.9.3
+rvm gemset create gcal
+rvm gemset use gcal
+bundle install
+ruby gcal_app.rb
+
+
+
